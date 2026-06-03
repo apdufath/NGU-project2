@@ -3,7 +3,7 @@
 A premium university-style student registration platform built with Laravel, PHP 8+, Tailwind CSS, and JavaScript featuring a purple & white liquid glass (glassmorphism) UI.
 
 ## Features
-
+ 
 - **Authentication**: Login, Register, Logout, Forgot Password, Reset Password
 - **Role-Based Access Control**: Admin and Guest/User roles with policies
 - **Student CRUD**: Create, read, update, delete with photo uploads
