@@ -12,7 +12,7 @@ A premium university-style student registration platform built with Laravel, PHP
 - **User Management**: Admin-only user and role management
 - **Security**: CSRF protection, form validation, authorization policies, secure uploads
 
-## Default User Accounts
+## Default User Accounts 
 
 These accounts are created automatically when you run `php artisan migrate --seed`:
 
