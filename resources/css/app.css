@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply antialiased text-white;
+    }
+}
+
+@layer components {
+    .glass-bg {
+        @apply min-h-screen bg-gradient-to-br from-brand-950 via-brand-800 to-indigo-950 relative overflow-hidden;
+    }
+
+    .glass-blob {
+        @apply absolute rounded-full blur-3xl opacity-30 pointer-events-none animate-pulse;
+    }
+
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl shadow-brand-950/20;
+    }
+
+    .glass-card-solid {
+        @apply bg-white/95 backdrop-blur-xl border border-white/40 rounded-2xl shadow-2xl text-gray-800;
+    }
+
+    .glass-input {
+        @apply w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-white/50 backdrop-blur-sm transition-all duration-200 focus:border-brand-300 focus:bg-white/15 focus:outline-none focus:ring-2 focus:ring-brand-400/50;
+    }
+
+    .glass-input-dark {
+        @apply w-full rounded-xl border border-gray-200 bg-white/80 px-4 py-3 text-gray-800 placeholder-gray-400 backdrop-blur-sm transition-all duration-200 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30;
+    }
+
+    /* Unified button system */
+    .glass-btn-base {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-sm
+               transition-all duration-200 ease-out
+               focus:outline-none focus:ring-2 focus:ring-brand-400/40 focus:ring-offset-2 focus:ring-offset-transparent
+               disabled:pointer-events-none disabled:opacity-50
+               hover:-translate-y-0.5 active:translate-y-0;
+    }
+
+    .glass-btn-md {
+        @apply h-11 min-h-[2.75rem] px-5;
+    }
+
+    .glass-btn-sm {
+        @apply h-9 min-h-[2.25rem] px-3 text-xs rounded-lg;
+    }
+
+    .glass-btn-lg {
+        @apply h-12 min-h-[3rem] px-6 text-base;
+    }
+
+    .glass-btn-block {
+        @apply w-full;
+    }
+
+    .glass-btn-primary {
+        @apply bg-gradient-to-r from-brand-500 to-brand-700 text-white
+               border border-white/10 backdrop-blur-sm
+               shadow-lg shadow-brand-900/30
+               hover:from-brand-400 hover:to-brand-600 hover:shadow-xl hover:shadow-brand-900/40;
+    }
+
+    .glass-btn-secondary {
+        @apply bg-white/10 text-white border border-white/30 backdrop-blur-sm
+               shadow-md shadow-brand-950/10
+               hover:bg-white/20 hover:border-white/40 hover:shadow-lg;
+    }
+
+    .glass-btn-danger {
+        @apply bg-gradient-to-r from-red-500/90 to-rose-700/90 text-white
+               border border-red-400/30 backdrop-blur-sm
+               shadow-lg shadow-red-950/20
+               hover:from-red-400 hover:to-rose-600 hover:shadow-xl;
+    }
+
+    .glass-btn-success {
+        @apply bg-gradient-to-r from-emerald-500/90 to-green-700/90 text-white
+               border border-emerald-400/30 backdrop-blur-sm
+               shadow-lg shadow-emerald-950/20
+               hover:from-emerald-400 hover:to-green-600 hover:shadow-xl;
+    }
+
+    .glass-btn-ghost {
+        @apply bg-white/5 text-white/90 border border-white/10 backdrop-blur-sm
+               hover:bg-white/15 hover:text-white hover:border-white/20;
+    }
+
+    .glass-quick-action {
+        @apply glass-btn-base glass-btn-md glass-btn-secondary glass-btn-block
+               justify-start px-4 text-left;
+    }
+
+    .glass-btn-outline {
+        @apply bg-white text-gray-700 border border-gray-300 shadow-sm
+               hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900;
+    }
+
+    .glass-btn-icon {
+        @apply shrink-0 h-5 w-5;
+    }
+
+    .glass-btn-spinner {
+        @apply h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white;
+    }
+
+    .glass-btn-base.is-loading .glass-btn-label {
+        @apply opacity-70;
+    }
+
+    .glass-btn-base.is-loading .glass-btn-spinner {
+        @apply inline-block;
+    }
+
+    .glass-nav-link {
+        @apply rounded-xl px-4 py-2 text-sm font-medium text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white;
+    }
+
+    .glass-nav-link-active {
+        @apply rounded-xl bg-white/15 px-4 py-2 text-sm font-semibold text-white shadow-inner;
+    }
+
+    .glass-badge {
+        @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+    }
+
+    .glass-table {
+        @apply w-full text-left text-sm;
+    }
+
+    .glass-table th {
+        @apply border-b border-white/10 px-4 py-3 font-semibold text-white/70 uppercase tracking-wider text-xs;
+    }
+
+    .glass-table td {
+        @apply border-b border-white/5 px-4 py-4 text-white/90;
+    }
+
+    .glass-stat-card {
+        @apply glass-card p-6 transition-all duration-300 hover:bg-white/15 hover:-translate-y-1;
+    }
+
+    .glass-page-header {
+        @apply mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+    }
+
+    .glass-page-title {
+        @apply text-3xl font-bold text-white;
+    }
+
+    .glass-page-subtitle {
+        @apply mt-1 text-white/60;
+    }
+
+    .glass-empty-state {
+        @apply flex flex-col items-center justify-center py-12 px-6 text-center;
+    }
+
+    .glass-empty-icon {
+        @apply mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 border border-white/20;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .slide-up {
+        animation: slideUp 0.6s ease-out forwards;
+    }
+
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
