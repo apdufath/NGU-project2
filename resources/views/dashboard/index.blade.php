@@ -88,8 +88,8 @@
                     <table class="glass-table">
                         <thead>
                             <tr>
+                                <th>Student</th>
                                 <th>Student ID</th>
-                                <th>Name</th>
                                 <th>Email</th>
                                 <th>Registered</th>
                                 <th class="text-right">Action</th>
@@ -98,8 +98,13 @@
                         <tbody>
                             @foreach($recent_registrations as $student)
                                 <tr class="hover:bg-white/5 transition-colors">
+                                    <td>
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <x-student-avatar :student="$student" size="xs" />
+                                            <span class="truncate font-medium">{{ $student->full_name }}</span>
+                                        </div>
+                                    </td>
                                     <td class="font-mono text-brand-200">{{ $student->student_id }}</td>
-                                    <td>{{ $student->full_name }}</td>
                                     <td>{{ $student->email }}</td>
                                     <td>{{ $student->created_at->diffForHumans() }}</td>
                                     <td class="text-right">

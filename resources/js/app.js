@@ -62,10 +62,16 @@ function initPhotoPreview() {
 
         if (!file) return;
 
+        if (!['image/jpeg', 'image/jpg', 'image/png', 'image/webp'].includes(file.type)) {
+            alert('Please select a JPG, JPEG, PNG, or WEBP image.');
+            input.value = '';
+            return;
+        }
+
         const reader = new FileReader();
         reader.onload = (e) => {
             preview.src = e.target.result;
-            preview.classList.remove('hidden');
+            preview.classList.remove('hidden', 'student-avatar-fallback-image');
             placeholder?.classList.add('hidden');
         };
         reader.readAsDataURL(file);

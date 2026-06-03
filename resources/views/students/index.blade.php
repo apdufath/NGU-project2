@@ -46,15 +46,9 @@
                             <tr class="hover:bg-white/5 transition-colors">
                                 <td class="font-mono text-brand-200">{{ $student->student_id }}</td>
                                 <td>
-                                    <div class="flex items-center gap-3">
-                                        @if($student->photo_url)
-                                            <img src="{{ $student->photo_url }}" alt="" class="h-10 w-10 rounded-xl object-cover">
-                                        @else
-                                            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/30 text-xs font-bold">
-                                                {{ $student->initials }}
-                                            </div>
-                                        @endif
-                                        {{ $student->full_name }}
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <x-student-avatar :student="$student" size="xs" />
+                                        <span class="truncate">{{ $student->full_name }}</span>
                                     </div>
                                 </td>
                                 <td>{{ $student->email }}</td>

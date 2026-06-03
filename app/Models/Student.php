@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Database\Factories\StudentFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -23,6 +24,8 @@ class Student extends Model
     /** @use HasFactory<StudentFactory> */
     use HasFactory;
 
+    public const DEFAULT_AVATAR = '/images/default-avatar.svg';
+
     protected function casts(): array
     {
         return [
@@ -30,24 +33,42 @@ class Student extends Model
         ];
     }
 
-    public function getPhotoUrlAttribute(): ?string
+    protected function photoUrl(): Attribute
     {
-        if (! $this->photo) {
-            return null;
-        }
+        return Attribute::get(function (): ?string {
+            if (! $this->hasPhoto()) {
+                return null;
+            }
 
-        return Storage::disk('public')->url($this->photo);
+            return '/storage/'.ltrim($this->photo, '/');
+        });
     }
 
-    public function getInitialsAttribute(): string
+    protected function initials(): Attribute
     {
-        $parts = explode(' ', $this->full_name);
-        $initials = '';
+        return Attribute::get(function (): string {
+            $parts = explode(' ', trim($this->full_name));
+            $initials = '';
 
-        foreach (array_slice($parts, 0, 2) as $part) {
-            $initials .= strtoupper(substr($part, 0, 1));
+            foreach (array_slice($parts, 0, 2) as $part) {
+                $initials .= strtoupper(substr($part, 0, 1));
+            }
+
+            return $initials ?: 'ST';
+        });
+    }
+
+    public function hasPhoto(): bool
+    {
+        if (blank($this->photo)) {
+            return false;
         }
 
-        return $initials ?: 'ST';
+        return Storage::disk('public')->exists($this->photo);
+    }
+
+    public function defaultAvatarUrl(): string
+    {
+        return self::DEFAULT_AVATAR;
     }
 }

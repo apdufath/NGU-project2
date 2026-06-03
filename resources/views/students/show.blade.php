@@ -15,20 +15,14 @@
             </x-slot:actions>
         </x-page-header>
 
-        <div class="glass-card p-8 slide-up">
-            <div class="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
-                @if($student->photo_url)
-                    <img src="{{ $student->photo_url }}" alt="{{ $student->full_name }}" class="h-40 w-40 rounded-2xl object-cover border-2 border-white/30 shadow-2xl">
-                @else
-                    <div class="flex h-40 w-40 items-center justify-center rounded-2xl bg-brand-500/30 text-5xl font-bold">
-                        {{ $student->initials }}
-                    </div>
-                @endif
+        <div class="glass-card p-6 md:p-8 slide-up">
+            <div class="student-profile-layout">
+                <x-student-avatar :student="$student" size="profile" />
 
-                <div class="flex-1 grid gap-6 sm:grid-cols-2 w-full">
+                <div class="student-profile-info grid gap-6 sm:grid-cols-2">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Email</p>
-                        <p class="mt-1 text-white">{{ $student->email }}</p>
+                        <p class="mt-1 break-words text-white">{{ $student->email }}</p>
                     </div>
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-white/50">Phone</p>

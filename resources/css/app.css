@@ -175,6 +175,50 @@
     .stagger-1 { animation-delay: 0.1s; }
     .stagger-2 { animation-delay: 0.2s; }
     .stagger-3 { animation-delay: 0.3s; }
+
+    .student-avatar {
+        @apply relative shrink-0 overflow-hidden rounded-2xl border-2 border-white/30 bg-white/10 shadow-xl shadow-brand-950/30 backdrop-blur-sm;
+    }
+
+    .student-avatar-xs {
+        @apply h-10 w-10 rounded-xl;
+    }
+
+    .student-avatar-sm {
+        @apply h-12 w-12 rounded-xl;
+    }
+
+    .student-avatar-md {
+        @apply h-24 w-24;
+    }
+
+    .student-avatar-profile {
+        @apply h-[100px] w-[100px] md:h-[120px] md:w-[120px] lg:h-40 lg:w-40;
+    }
+
+    .student-avatar-image {
+        @apply h-full w-full object-cover;
+    }
+
+    .student-avatar-placeholder {
+        @apply flex h-full w-full items-center justify-center bg-gradient-to-br from-brand-500/40 to-brand-700/50 font-bold text-white;
+    }
+
+    .student-avatar-fallback-image {
+        @apply object-contain bg-brand-900/20 p-3;
+    }
+
+    .student-photo-upload {
+        @apply w-full max-w-xs md:max-w-none;
+    }
+
+    .student-profile-layout {
+        @apply flex flex-col items-center gap-8 md:flex-row md:items-start;
+    }
+
+    .student-profile-info {
+        @apply w-full min-w-0 flex-1;
+    }
 }
 
 @keyframes fadeIn {

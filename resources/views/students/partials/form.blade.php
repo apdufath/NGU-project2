@@ -1,12 +1,12 @@
 @php $student = $student ?? null; @endphp
 
-<div class="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+<div class="student-profile-layout mb-6 rounded-2xl border border-white/10 bg-white/5 p-6">
     <x-student-photo :student="$student" />
-    <div class="flex-1 w-full">
-        <label class="mb-2 block text-sm font-medium text-white/80">Profile Photo</label>
-        <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/webp"
-               class="block w-full text-sm text-white/70 file:mr-4 file:rounded-lg file:border-0 file:bg-brand-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-brand-400">
-        @error('photo')<p class="mt-1 text-sm text-red-300">{{ $message }}</p>@enderror
+    <div class="student-profile-info">
+        <h3 class="text-lg font-semibold text-white">Student Photo</h3>
+        <p class="mt-1 text-sm text-white/60">
+            Upload a clear portrait photo. This will appear on the student profile, list, and dashboard.
+        </p>
     </div>
 </div>
 
